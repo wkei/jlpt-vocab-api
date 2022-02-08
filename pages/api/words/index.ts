@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { Word, ErrorMsg, PaginationParams } from '../types';
+import { Word, ErrorMsg, PaginationParams } from '../../../types';
 import DB from '../../../data-source/db.json';
 
 export type WordsQuery = {
