@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 
-import { Word } from './api/types';
+import { Word } from '../types';
 import useCacheFetcher from '../utils/use-cache-fetcher';
 
 const Home: NextPage = () => {
