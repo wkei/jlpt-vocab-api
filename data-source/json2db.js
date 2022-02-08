@@ -1,10 +1,10 @@
-const fs = require("fs");
-const crypto = require("crypto");
+const fs = require('fs');
+const crypto = require('crypto');
 
 const levels = [5, 4, 3, 2, 1];
-const outFile = "db.json";
+const outFile = 'db.json';
 
-const md5 = (str) => crypto.createHash("md5").update(str).digest("hex");
+const md5 = (str) => crypto.createHash('md5').update(str).digest('hex');
 
 let vocab = [];
 
@@ -20,5 +20,5 @@ levels.forEach((level) => {
 });
 
 fs.writeFile(outFile, JSON.stringify(vocab), () =>
-  console.log("Wrote", vocab.length, "words to", outFile)
+  console.log('Wrote', vocab.length, 'words to', outFile)
 );

@@ -1,3 +1,6 @@
-# jlpt-vocab-graphql
+# JLPT-VOCAB_GRAPHQL
 
-A GraphQL server for JLPT Vocabulary from N5 to N1
+Open API for JLPT Vocabulary from N5 to N1
+
+- [x] RESTful API
+- [ ] GraphQL
