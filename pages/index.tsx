@@ -1,23 +1,16 @@
 import type { NextPage } from 'next';
 
-const APIS = [
-  '/api/random',
-  '/api/words',
-  '/api/words?level=3',
-  '/api/words?page=20&limit=10',
-];
+import useCacheFetcher from '../utils/use-cache-fetcher';
 
 const Home: NextPage = () => {
+  const { fetcher } = useCacheFetcher('words');
+  const { data, error } = fetcher('/api/words/all');
+  const isLoading = !data && !error;
+
   return (
-    <ul>
-      {APIS.map((api) => (
-        <li key={api}>
-          <a href={api}>
-            <code>{api}</code>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <code>{isLoading ? 'loading...' : `${data.length} words`}</code>
+    </div>
   );
 };
 
