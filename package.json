@@ -1,5 +1,5 @@
 {
-  "name": "jlpt-vocab-graphql",
+  "name": "jlpt-vocab-api",
   "private": true,
   "scripts": {
     "dev": "next dev",
