@@ -1,7 +1,7 @@
 import { Config } from 'apollo-server-micro';
 
 import { Word, WordsResponse } from '../types';
-import DB from '../data-source/db.json';
+import DB from '../../data-source/db.json';
 
 const resolvers: Config['resolvers'] = {
   Query: {

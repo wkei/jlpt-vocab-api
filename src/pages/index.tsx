@@ -9,7 +9,7 @@ const Home: NextPage = () => {
 
   if (error) return <code>failed to load</code>;
   if (!data) return <div>loading...</div>;
-  return <code>{data.length} word</code>;
+  return <code>{data.length} words</code>;
 };
 
 export default Home;

@@ -6,7 +6,7 @@ import {
   WordsResponse,
   PaginationParams,
 } from '../../../types';
-import DB from '../../../data-source/db.json';
+import DB from '../../../../data-source/db.json';
 
 export type WordsQuery = {
   page?: string;

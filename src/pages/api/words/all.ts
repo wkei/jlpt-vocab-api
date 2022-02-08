@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { Word } from '../../../types';
-import DB from '../../../data-source/db.json';
+import DB from '../../../../data-source/db.json';
 
 export default function handler(
   req: NextApiRequest,
