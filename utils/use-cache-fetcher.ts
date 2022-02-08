@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
-export default function useCacheFetcher(cacheId: string) {
-  const fetcher = (url: string) => {
-    const [data, setData] = useState(null);
+export default function useCacheFetche(cacheId: string) {
+  const fetcher = <T>(url: string) => {
+    const [data, setData] = useState<T | null>(null);
     const [error, setError] = useState(null);
     const cacheRef = useRef<Cache | null>(null);
 

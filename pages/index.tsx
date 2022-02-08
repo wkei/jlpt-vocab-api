@@ -1,17 +1,15 @@
 import type { NextPage } from 'next';
 
+import { Word } from './api/types';
 import useCacheFetcher from '../utils/use-cache-fetcher';
 
 const Home: NextPage = () => {
   const { fetcher } = useCacheFetcher('words');
-  const { data, error } = fetcher('/api/words/all');
-  const isLoading = !data && !error;
+  const { data, error } = fetcher<Word[]>('/api/words/all');
 
-  return (
-    <div>
-      <code>{isLoading ? 'loading...' : `${data.length} words`}</code>
-    </div>
-  );
+  if (error) return <code>failed to load</code>;
+  if (!data) return <div>loading...</div>;
+  return <code>{data.length} word</code>;
 };
 
 export default Home;
