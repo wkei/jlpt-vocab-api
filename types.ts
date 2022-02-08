@@ -12,6 +12,12 @@ export type PaginationParams = {
   limit: number;
 };
 
+export type WordsResponse = PaginationParams & {
+  total: number;
+  level?: number;
+  words: Word[];
+};
+
 export type ErrorMsg = {
   message: string;
 };

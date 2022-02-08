@@ -1,6 +1,6 @@
 import { Config } from 'apollo-server-micro';
 
-import { Word } from '../types';
+import { Word, WordsResponse } from '../types';
 import DB from '../data-source/db.json';
 
 const resolvers: Config['resolvers'] = {
@@ -12,14 +12,14 @@ const resolvers: Config['resolvers'] = {
       const start = (page - 1) * limit;
       const filteredDB = level ? DB.filter((item) => item.level === level) : DB;
       const words: Word[] = filteredDB.slice(start, start + limit);
-      let data = {
+      let data: WordsResponse = {
         total: DB.length,
         page,
         limit,
         words,
       };
       if (level) {
-        return { ...data, level };
+        data.level = level;
       }
       return data;
     },

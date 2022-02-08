@@ -1,18 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { Word, ErrorMsg, PaginationParams } from '../../../types';
+import {
+  Word,
+  ErrorMsg,
+  WordsResponse,
+  PaginationParams,
+} from '../../../types';
 import DB from '../../../data-source/db.json';
 
 export type WordsQuery = {
   page?: string;
   limit?: string;
   level?: string;
-};
-
-type WordsResponse = PaginationParams & {
-  total: number;
-  level?: number;
-  words: Word[];
 };
 
 const DEFAULT_PAGINATION: PaginationParams = {
