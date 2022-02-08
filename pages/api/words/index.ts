@@ -38,10 +38,6 @@ export default function handler(
   const limit = parseIntQuery(query.limit, DEFAULT_PAGINATION.limit);
   const level = parseIntQuery(query.level, 0); // 0 means all levels
 
-  if (page * limit - TOTAL >= limit) {
-    return res.status(400).json({ message: 'Out of range' });
-  }
-
   const start = (page - 1) * limit;
   const filteredDB = level ? DB.filter((item) => item.level === level) : DB;
   const words: Word[] = filteredDB.slice(start, start + limit);
