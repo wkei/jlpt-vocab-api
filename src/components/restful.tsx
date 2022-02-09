@@ -13,7 +13,7 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function RESTful() {
   const [api, setApi] = useState(APIS[0]);
-  const { data, error } = useSWR(() => api, fetcher);
+  const { data, error, mutate } = useSWR(() => api, fetcher);
 
   const result =
     !data && !error
@@ -21,6 +21,11 @@ export default function RESTful() {
       : error
       ? JSON.stringify(error)
       : JSON.stringify(data, null, 2);
+
+  const update = (api: string) => {
+    mutate(null);
+    setApi(api);
+  };
 
   return (
     <section>
@@ -30,7 +35,7 @@ export default function RESTful() {
           {APIS.map((i) => (
             <li key={i}>
               <button
-                onClick={() => setApi(i)}
+                onClick={() => update(i)}
                 className={`underline text-left ${
                   api === i ? '' : 'text-slate-400'
                 }`}
