@@ -1,6 +1,6 @@
 {
   "name": "jlpt-vocab-api",
-  "private": true,
+  "description": "A RESTful / GraphQL API for JPLT vocabulary from N5 to N1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

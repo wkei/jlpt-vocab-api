@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 
+import Head from '../components/head';
 import GraphQL from '../components/graphql';
 import RESTful from '../components/restful';
 
@@ -23,9 +23,7 @@ const GithubLogo = () => (
 const Home: NextPage = () => {
   return (
     <div className="container mx-auto px-6">
-      <Head>
-        <title>JLPT Vocabulary API</title>
-      </Head>
+      <Head />
       <div className="prose min-w-full mx-auto my-20">
         <h1>JLPT Vocabulary API</h1>
         <p>
