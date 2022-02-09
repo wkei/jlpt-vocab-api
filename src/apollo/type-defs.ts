@@ -12,14 +12,14 @@ const typeDefs: Config['typeDefs'] = gql`
 
   type PaginatedWords {
     total: Int
-    page: Int
+    offset: Int
     limit: Int
     level: Int
     words: [Word]
   }
 
   type Query {
-    words(page: Int = 1, limit: Int = 10, level: Int = 0): PaginatedWords
+    words(offset: Int = 0, limit: Int = 10, level: Int = 0): PaginatedWords
 
     random: Word
 

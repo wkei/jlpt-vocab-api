@@ -9,13 +9,13 @@ import {
 import DB from '../../../../data-source/db.json';
 
 export type WordsQuery = {
-  page?: string;
+  offset?: string;
   limit?: string;
   level?: string;
 };
 
 const DEFAULT_PAGINATION: PaginationParams = {
-  page: 1,
+  offset: 0,
   limit: 10,
 };
 
@@ -33,17 +33,17 @@ export default function handler(
   res: NextApiResponse<WordsResponse | ErrorMsg>
 ) {
   const { query } = req;
-  const page = parseIntQuery(query.page, DEFAULT_PAGINATION.page);
+  const offset = parseIntQuery(query.offset, DEFAULT_PAGINATION.offset);
   const limit = parseIntQuery(query.limit, DEFAULT_PAGINATION.limit);
   const level = parseIntQuery(query.level, 0); // 0 means all levels
 
-  const start = (page - 1) * limit;
+  const start = offset * limit;
   const filteredDB = level ? DB.filter((item) => item.level === level) : DB;
   const words: Word[] = filteredDB.slice(start, start + limit);
 
   const data: WordsResponse = {
     total: TOTAL,
-    page,
+    offset,
     limit,
     words,
   };

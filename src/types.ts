@@ -8,7 +8,7 @@ export type Word = {
 };
 
 export type PaginationParams = {
-  page: number;
+  offset: number;
   limit: number;
 };
 

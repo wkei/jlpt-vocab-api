@@ -7,14 +7,14 @@ const resolvers: Config['resolvers'] = {
   Query: {
     words: (
       _: any,
-      { page, limit, level }: { page: number; limit: number; level: number }
+      { offset, limit, level }: { offset: number; limit: number; level: number }
     ) => {
-      const start = (page - 1) * limit;
+      const start = offset * limit;
       const filteredDB = level ? DB.filter((item) => item.level === level) : DB;
       const words: Word[] = filteredDB.slice(start, start + limit);
       let data: WordsResponse = {
         total: DB.length,
-        page,
+        offset,
         limit,
         words,
       };
