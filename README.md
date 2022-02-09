@@ -1,6 +1,6 @@
 # JLPT-VOCAB-API
 
-![deployment status](https://img.shields.io/github/deployments/wkei/jlpt-vocab-api/production)
+![deployment status](https://img.shields.io/github/deployments/wkei/jlpt-vocab-api/Production)
 
 A RESTful / GraphQL API for JPLT vocabulary from N5 to N1
 
