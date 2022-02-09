@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 
 const APIS = [
@@ -22,7 +22,11 @@ export default function RESTful() {
       ? JSON.stringify(error)
       : JSON.stringify(data, null, 2);
 
-  const update = (api: string) => {
+  const update = (api: string, event: React.MouseEvent) => {
+    if (event.metaKey || event.ctrlKey) {
+      return;
+    }
+    event.preventDefault();
     mutate(null);
     setApi(api);
   };
@@ -34,14 +38,13 @@ export default function RESTful() {
         <ul>
           {APIS.map((i) => (
             <li key={i}>
-              <button
-                onClick={() => update(i)}
-                className={`underline text-left ${
-                  api === i ? '' : 'text-slate-400'
-                }`}
+              <a
+                href={i}
+                className={`${api === i ? '' : 'text-slate-400'}`}
+                onClick={(e) => update(i, e)}
               >
                 {i}
-              </button>
+              </a>
             </li>
           ))}
         </ul>
