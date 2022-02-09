@@ -28,17 +28,17 @@ export default function GraphQL() {
 
   return (
     <section>
-      <h2>RESTful</h2>
+      <h2>GraphQL</h2>
       <p>
         Playground: <Link href="/api/graphql">/api/graphql</Link>
       </p>
-      <div className="grid  md:grid-cols-3  gap-4 grid-cols-none">
+      <div className="grid md:grid-cols-3  gap-4 grid-cols-none">
         <textarea
-          className="font-mono text-sm border p-4 resize-none"
+          className="min-h-[16rem] w-full font-mono text-sm border p-4 resize-none"
           readOnly
           value={QUERY}
         />
-        <pre className="col-span-2 overflow-scroll h-80 text-xs m-0">
+        <pre className="md:col-span-2 overflow-scroll h-80 text-xs m-0">
           {result}
         </pre>
       </div>

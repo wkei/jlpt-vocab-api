@@ -30,7 +30,7 @@ export default function RESTful() {
   return (
     <section>
       <h2>RESTful</h2>
-      <div className="grid  md:grid-cols-3  gap-4 grid-cols-none">
+      <div className="grid md:grid-cols-3  gap-4 grid-cols-none">
         <ul>
           {APIS.map((i) => (
             <li key={i}>
@@ -45,7 +45,7 @@ export default function RESTful() {
             </li>
           ))}
         </ul>
-        <pre className="col-span-2 overflow-scroll h-80 text-xs m-0">
+        <pre className="md:col-span-2 overflow-scroll h-80 text-xs m-0">
           {result}
         </pre>
       </div>
