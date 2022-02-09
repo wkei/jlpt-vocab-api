@@ -16,10 +16,9 @@ export default function Head() {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={desc} />
       <meta property="og:url" content={url} />
-      <meta property="og:image" content={icon} />
+      <meta property="og:image" content={`${url}${icon}`} />
 
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:creator" content="@kei_yq" />
     </NextHead>
   );
 }
