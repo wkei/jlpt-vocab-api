@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Script from 'next/script';
 
 import Head from '../components/head';
 import GraphQL from '../components/graphql';
@@ -44,6 +45,12 @@ const Home: NextPage = () => {
           <GithubLogo />
         </a>
       </footer>
+      <Script
+        async
+        defer
+        data-website-id="8b828576-7db9-4de6-87f0-b0f36a5a922d"
+        src="https://kumami.vercel.app/umami.js"
+      />
     </div>
   );
 };
