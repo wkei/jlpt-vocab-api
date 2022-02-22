@@ -10,6 +10,7 @@
   "dependencies": {
     "@apollo/client": "^3.5.8",
     "apollo-server-micro": "^3.6.2",
+    "cors": "^2.8.5",
     "graphql": "^16.3.0",
     "graphql-request": "^4.0.0",
     "micro": "^9.3.4",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.1",
+    "@types/cors": "^2.8.12",
     "@types/node": "17.0.16",
     "@types/react": "17.0.39",
     "autoprefixer": "^10.4.2",

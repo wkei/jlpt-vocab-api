@@ -1,11 +1,11 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiRequest, NextApiResponse } from 'next'
 
-import { Word } from '../../../types';
-import DB from '../../../../data-source/db.json';
+import { Word } from '../../../types'
+import DB from '../../../../data-source/db.json'
+import withCors from '../../../utils/with-cors'
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Word[]>
-) {
-  res.status(200).json(DB);
+function handler(req: NextApiRequest, res: NextApiResponse<Word[]>) {
+  res.status(200).json(DB)
 }
+
+export default withCors(handler)
