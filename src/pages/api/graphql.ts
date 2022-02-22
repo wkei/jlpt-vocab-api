@@ -1,30 +1,34 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { ApolloServer } from 'apollo-server-micro';
-import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { ApolloServer } from 'apollo-server-micro'
+import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core'
+import Cors from 'micro-cors'
 
-import typeDefs from '../../apollo/type-defs';
-import resolvers from '../../apollo/resolvers';
+import typeDefs from '../../apollo/type-defs'
+import resolvers from '../../apollo/resolvers'
+
+const cors = Cors()
 
 export const config = {
   api: {
     bodyParser: false,
   },
-};
+}
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
-});
+})
 
-const startServer = apolloServer.start();
+const startServer = apolloServer.start()
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  await startServer;
+export default cors(async (req, res) => {
+  if (req.method === 'OPTIONS') {
+    res.end()
+    return false
+  }
 
-  await apolloServer.createHandler({
+  await startServer
+  return apolloServer.createHandler({
     path: '/api/graphql',
-  })(req, res);
-}
+  })(req, res)
+})
