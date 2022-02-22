@@ -27,6 +27,7 @@ yarn build
   "meaning": "every morning",
   "hiragana": "まいあさ",
   "romaji": "maiasa",
-  "level": 5
+  "level": 5,
+  "uuid": "1adcbfaaea2489d61ef5122af3542a87"
 }
 ```
