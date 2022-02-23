@@ -1,10 +1,10 @@
-import { gql, Config } from 'apollo-server-micro';
+import { gql, Config } from 'apollo-server-micro'
 
 const typeDefs: Config['typeDefs'] = gql`
   type Word {
     word: String
     meaning: String
-    hiragana: String
+    furigana: String
     romaji: String
     level: Int
     uuid: String
@@ -25,6 +25,6 @@ const typeDefs: Config['typeDefs'] = gql`
 
     all: [Word]
   }
-`;
+`
 
-export default typeDefs;
+export default typeDefs

@@ -1,8 +1,8 @@
-import { request, RequestDocument } from 'graphql-request';
-import Link from 'next/link';
-import useSWR from 'swr';
+import { request, RequestDocument } from 'graphql-request'
+import Link from 'next/link'
+import useSWR from 'swr'
 
-const fetcher = (query: RequestDocument) => request('/api/graphql', query);
+const fetcher = (query: RequestDocument) => request('/api/graphql', query)
 
 const QUERY = `query {
   words (offset: 22, limit: 5) {
@@ -10,21 +10,21 @@ const QUERY = `query {
     words {
       word
       meaning
-      hiragana
+      furigana
       level
     }
   }
-}`;
+}`
 
 export default function GraphQL() {
-  const { data, error } = useSWR(QUERY, fetcher);
+  const { data, error } = useSWR(QUERY, fetcher)
 
   const result =
     !data && !error
       ? 'loading...'
       : error
       ? JSON.stringify(error)
-      : JSON.stringify(data, null, 2);
+      : JSON.stringify(data, null, 2)
 
   return (
     <section>
@@ -43,5 +43,5 @@ export default function GraphQL() {
         </pre>
       </div>
     </section>
-  );
+  )
 }
