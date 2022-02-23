@@ -19,6 +19,8 @@ levels.forEach((level) => {
   vocab = vocab.concat(data)
 })
 
-fs.writeFile(outFile, JSON.stringify(vocab), () =>
+const plainText = JSON.stringify(vocab).replace(/​/g, '') // remove invisible character
+
+fs.writeFile(outFile, plainText, () =>
   console.log('Wrote', vocab.length, 'words to', outFile)
 )
