@@ -23,7 +23,7 @@ function tabs2json(level) {
   ]).then(function ([list, hiragana]) {
     const content = list.map((item) => {
       item.furigana = hiragana[item.word] || ''
-      item.romaji = getRomaji(item.hiragana || item.word)
+      item.romaji = getRomaji(item.furigana || item.word)
       item.level = level
       return item
     })
