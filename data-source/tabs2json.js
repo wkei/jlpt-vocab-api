@@ -2,7 +2,7 @@ const fs = require('fs')
 const readline = require('readline')
 const japanese = require('japanese')
 
-const outDir = './json'
+const outDir = './db'
 
 fs.rmSync(outDir, { recursive: true, force: true })
 fs.mkdirSync(outDir)
@@ -77,7 +77,8 @@ function getRomaji(words) {
 }
 
 function output(file, content) {
-  fs.writeFile(file, JSON.stringify(content), () => {
+  const plainText = JSON.stringify(content).replace(/​/g, '') // remove invisible character
+  fs.writeFile(file, plainText, () => {
     console.log('Wrote', content.length, 'words to', file)
   })
 }
