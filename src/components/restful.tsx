@@ -3,9 +3,11 @@ import useSWR from 'swr';
 
 const APIS = [
   '/api/words',
+  '/api/words?word=夜更かし',
   '/api/words?level=3',
   '/api/words?offset=20&limit=10',
   '/api/words/random',
+  '/api/words/random?level=1',
   '/api/words/all',
 ];
 

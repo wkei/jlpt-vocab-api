@@ -5,7 +5,7 @@ import useSWR from 'swr'
 const fetcher = (query: RequestDocument) => request('/api/graphql', query)
 
 const QUERY = `query {
-  words (offset: 22, limit: 5) {
+  words (offset: 22, limit: 5, level: 1) {
     total
     words {
       word
