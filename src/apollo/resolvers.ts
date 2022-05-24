@@ -1,35 +1,29 @@
 import { Config } from 'apollo-server-micro';
-
-import { Word, WordsResponse } from '../types';
-import DB from '../../data-source/db.json';
+import { pickDB, searchWords, randomWord } from '../utils/search-words'
 
 const resolvers: Config['resolvers'] = {
   Query: {
     words: (
       _: any,
-      { offset, limit, level }: { offset: number; limit: number; level: number }
+      { offset, limit, level, word }: { offset: number; limit: number; level?: Level, word?: String }
     ) => {
-      const start = offset * limit;
-      const filteredDB = level ? DB.filter((item) => item.level === level) : DB;
-      const words: Word[] = filteredDB.slice(start, start + limit);
-      let data: WordsResponse = {
-        total: DB.length,
+      return searchWords({
         offset,
         limit,
-        words,
-      };
-      if (level) {
-        data.level = level;
-      }
-      return data;
+        level,
+        word
+      })
     },
 
-    random: () => {
-      return DB[Math.floor(Math.random() * DB.length)];
+    random: (
+      _: any,
+      { level }: { level?: Level }
+    ) => {
+      return randomWord(level)
     },
 
     all: () => {
-      return DB;
+      return pickDB();
     },
   },
 };

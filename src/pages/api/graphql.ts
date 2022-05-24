@@ -16,7 +16,9 @@ export const config = {
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
-  plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+  introspection: true,
+  playground: true,
+  // plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 })
 
 const startServer = apolloServer.start()

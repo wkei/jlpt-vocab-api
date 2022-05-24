@@ -1,27 +1,25 @@
 import { gql, Config } from 'apollo-server-micro'
 
-const typeDefs: Config['typeDefs'] = gql`
+export const typeDefs: Config['typeDefs'] = gql`
   type Word {
     word: String
     meaning: String
     furigana: String
     romaji: String
     level: Int
-    uuid: String
   }
 
   type PaginatedWords {
     total: Int
     offset: Int
     limit: Int
-    level: Int
     words: [Word]
   }
 
   type Query {
-    words(offset: Int = 0, limit: Int = 10, level: Int = 0): PaginatedWords
+    words(offset: Int = 0, limit: Int = 10, level: Int, word: String): PaginatedWords
 
-    random: Word
+    random(level: Int): Word
 
     all: [Word]
   }

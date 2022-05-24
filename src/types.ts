@@ -1,10 +1,10 @@
+export type Level = 0 | 1 | 2 | 3 | 4 | 5
 export type Word = {
   word: string
   meaning: string
   furigana: string
   romaji: string
-  level: number
-  uuid: string
+  level: Level
 }
 
 export type PaginationParams = {
@@ -14,7 +14,6 @@ export type PaginationParams = {
 
 export type WordsResponse = PaginationParams & {
   total: number
-  level?: number
   words: Word[]
 }
 

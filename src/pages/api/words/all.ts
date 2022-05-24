@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { Word } from '../../../types'
-import DB from '../../../../data-source/db.json'
+import DB from '../../../../data-source/db/all.json'
 import withCors from '../../../utils/with-cors'
 
 function handler(req: NextApiRequest, res: NextApiResponse<Word[]>) {
