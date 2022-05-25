@@ -1,11 +1,12 @@
 import { Config } from 'apollo-server-micro';
+import {  Level } from '../types';
 import { pickDB, searchWords, randomWord } from '../utils/search-words'
 
 const resolvers: Config['resolvers'] = {
   Query: {
     words: (
       _: any,
-      { offset, limit, level, word }: { offset: number; limit: number; level?: Level, word?: String }
+      { offset, limit, level, word }: { offset: number; limit: number; level?: Level, word?: string }
     ) => {
       return searchWords({
         offset,

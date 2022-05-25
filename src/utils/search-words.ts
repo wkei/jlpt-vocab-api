@@ -1,7 +1,7 @@
 import { Word, WordsResponse, Level } from '../types';
 import { all, n1, n2, n3, n4, n5 } from '../../data-source/db'
 
-export const pickDB = (level?: Level): Word[] => {
+export const pickDB = (level?: number): Word[] => {
   if (level === 1) return n1
   if (level === 2) return n2
   if (level === 3) return n3
@@ -15,7 +15,7 @@ export const search = (db: Word[], word: string): Word[] => {
 }
 
 export const searchWords = (
-  { offset, limit, level, word }: { offset: number; limit: number; level?: Level, word?: String }
+  { offset, limit, level, word }: { offset: number; limit: number; level?: Level, word?: string }
 ) => {
   limit = limit || 10
   offset = offset || 0
@@ -24,7 +24,7 @@ export const searchWords = (
   const start = offset * limit;
   const words = result.slice(start, start + limit);
   const data: WordsResponse = {
-    total: result .length,
+    total: result.length,
     offset,
     limit,
     words,
@@ -32,7 +32,7 @@ export const searchWords = (
   return data;
 } 
 
-export const randomWord = (level?: Level) => {
+export const randomWord = (level?: number) => {
   const db = pickDB(level)
   return db[Math.floor(Math.random() * db.length)];
 }

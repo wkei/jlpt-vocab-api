@@ -15,12 +15,17 @@ const DEFAULT_QUERY = {
   offset: 0,
   limit: 10,
 }
+const isNumber = (s: any): boolean => {
+  if (typeof s === 'number') return true
+  if (typeof s !== 'string') return false
+  return !isNaN(parseFloat(s))
+}
 const parseQuery = (query: WordsQuery) => {
   return Object.entries(query).reduce((result, [k, v]) => {
     if (v !== '') {
       return {
         ...result,
-        [k]: isNaN(v) ? v : parseInt(v, 10)
+        [k]: isNumber(v) ? parseInt(v, 10) : v
       }
     }
     return result

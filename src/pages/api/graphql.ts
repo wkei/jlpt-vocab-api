@@ -17,7 +17,6 @@ const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
   introspection: true,
-  playground: true,
   // plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 })
 
