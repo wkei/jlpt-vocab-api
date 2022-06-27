@@ -27,7 +27,14 @@ function tabs2json(level) {
       item.level = level
       return item
     })
-    output(outFile, content)
+    // output
+    let text = JSON.stringify(content).replace(/​/g, '') // remove invisible character
+    // remove unexpected garble
+    if (level === 3) {
+      text = text.replace(', 10E4:1 odds', '')
+    }
+    fs.writeFileSync(outFile, text)
+    console.log('Wrote', content.length, 'words to', outFile)
   })
 }
 
@@ -74,13 +81,6 @@ function getInnerText(str) {
 function getRomaji(words) {
   const romajis = words.split(/\s\/\s/).map((word) => japanese.romanize(word))
   return romajis.join(' / ')
-}
-
-function output(file, content) {
-  const plainText = JSON.stringify(content).replace(/​/g, '') // remove invisible character
-  fs.writeFile(file, plainText, () => {
-    console.log('Wrote', content.length, 'words to', file)
-  })
 }
 
 function splitComma(str) {
