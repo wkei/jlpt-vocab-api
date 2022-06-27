@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import useSWR from 'swr';
+import React, { useState } from 'react'
+import useSWR from 'swr'
 
 const APIS = [
   '/api/words',
@@ -9,29 +9,30 @@ const APIS = [
   '/api/words/random',
   '/api/words/random?level=1',
   '/api/words/all',
-];
+  '/api/words/all?level=3',
+]
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+const fetcher = (url: string) => fetch(url).then((r) => r.json())
 
 export default function RESTful() {
-  const [api, setApi] = useState(APIS[0]);
-  const { data, error, mutate } = useSWR(() => api, fetcher);
+  const [api, setApi] = useState(APIS[0])
+  const { data, error, mutate } = useSWR(() => api, fetcher)
 
   const result =
     !data && !error
       ? 'loading...'
       : error
       ? JSON.stringify(error)
-      : JSON.stringify(data, null, 2);
+      : JSON.stringify(data, null, 2)
 
   const update = (api: string, event: React.MouseEvent) => {
     if (event.metaKey || event.ctrlKey) {
-      return;
+      return
     }
-    event.preventDefault();
-    mutate(null);
-    setApi(api);
-  };
+    event.preventDefault()
+    mutate(null)
+    setApi(api)
+  }
 
   return (
     <section>
@@ -55,5 +56,5 @@ export default function RESTful() {
         </pre>
       </div>
     </section>
-  );
+  )
 }

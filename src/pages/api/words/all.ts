@@ -1,11 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { Word } from '../../../types'
-import { all } from '../../../../data-source/db'
+import { Word, Level } from '../../../types'
 import withCors from '../../../utils/with-cors'
+import { pickDB } from '../../../utils/search-words'
 
-function handler(req: NextApiRequest, res: NextApiResponse<Word[]>) {
-  res.status(200).json(all)
+function handler(
+  req: NextApiRequest & { query: { level?: string } },
+  res: NextApiResponse<Word[]>
+) {
+  const level = parseInt(req.query.level || '', 10) as Level
+  res.status(200).json(pickDB(level))
 }
 
 export default withCors(handler)
